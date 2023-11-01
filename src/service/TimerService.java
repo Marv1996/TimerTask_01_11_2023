@@ -2,7 +2,7 @@ package service;
 
 public class TimerService {
 
-    public static void timer(int minute, int second) {
+    public static void timer(int minute, int second) throws InterruptedException {
         for (int i = second, j = minute; i >= 0; i--) {
             if (i == 0) {
                 if (j > 9) {
@@ -10,11 +10,8 @@ public class TimerService {
                 } else {
                     System.out.println("0" + j + ":00");
                 }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                Thread.sleep(1000);
+
                 i += 59;
                 j--;
             }
@@ -30,11 +27,7 @@ public class TimerService {
             } else {
                 System.out.println("0" + j + ":" + "0" + i);
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Thread.sleep(1000);
         }
     }
 }

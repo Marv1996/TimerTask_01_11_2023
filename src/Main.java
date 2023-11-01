@@ -14,7 +14,11 @@ public class Main {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                TimerService.timer(x, y);
+                try {
+                    TimerService.timer(x, y);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         thread.start();
