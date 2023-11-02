@@ -1,5 +1,3 @@
-import service.TimerService;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -11,16 +9,7 @@ public class Main {
         // .....
         // 00:00
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    TimerService.timer(x, y);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        thread.start();
+        CustomTimer customTimer = new CustomTimer(x, y);
+        customTimer.start();
     }
 }
